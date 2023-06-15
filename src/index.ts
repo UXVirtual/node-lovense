@@ -1,4 +1,5 @@
 import { FetchError, Response } from "node-fetch";
+import { LovenseConnectionType } from "./constants/connectionType";
 
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch.apply(null, args));
@@ -8,13 +9,13 @@ class Lovense {
     connectionType: LovenseConnectionType;
 
     /** Connection Port needed for Local API access */
-    localConnectPort: Number = 30010;
+    localConnectPort = 30010;
 
     /** Local Domain */
-    localDomain: String;
+    localDomain: string;
 
     /** What platform is the connection running on? */
-    platform: String;
+    platform: string;
 
     /** Cache of the Lovense Toys. Information in here may not be correct and shouldn't be used. */
     _toysCache: LovenseToy[];
@@ -87,7 +88,7 @@ class Lovense {
         return this._toysCache.filter(toy => toy.status);
     }
 
-    Vibrate(toy: String|LovenseToy, strength: Number, duration?: Number): Promise<void> {
+    Vibrate(toy: string|LovenseToy, strength: number, duration?: number): Promise<void> {
         duration = duration || 0;
 
         if (strength > 20) { strength = 20; }
@@ -177,7 +178,7 @@ class Lovense {
     /**
      * Generate the Correct URL Scheme for Local VS QR
      */
-    private _generateLovenseUrl(): String {
+    private _generateLovenseUrl(): string {
         switch (this.connectionType) {
             case LovenseConnectionType.CONNECTION_TYPE_PC:
                 return `https://127-0-0-1.lovense.club:${this.localConnectPort}/command`;
@@ -198,10 +199,10 @@ class Lovense {
     /**
      * Convert the Object into URL encoded Parameters
      * @param params Object of parameters to be sent to the Server
-     * @returns {String} String of URL encoded parameters
+     * @returns {string} String of URL encoded parameters
      */
-    private _formatParams(params: LovenseCommand|Object): String {
-        var retArr: String[] = [];
+    private _formatParams(params: LovenseCommand|Object): string {
+        var retArr: string[] = [];
         for (const key in params) {
             if (Object.prototype.hasOwnProperty.call(params, key)) {
                 const value = params[key];
