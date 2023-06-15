@@ -1,16 +1,16 @@
 class LovenseResponse {
-    code: Number;
+    code: number;
     data?: LovenseResponseData;
-    type: String;
+    type: string;
 }
 
 class LovenseResponseData {
-    toys?: String|LovenseToy[];
+    toys?: string|LovenseToy[];
     platform?: LovensePlatform;
     appType?: LovenseAppType;
 
-    mId?: String;
-    mToken?: String;
+    mId?: string;
+    mToken?: string;
 }
 
 enum LovensePlatform {

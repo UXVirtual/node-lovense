@@ -10,9 +10,9 @@ var LovenseErrorMessage = {
 };
 
 class LovenseError {
-    status: Number;
-    message: String;
-    content?: Object;
+    status: number;
+    message: string;
+    content?: object;
 
     constructor(arg) {
         this.status = arg.status;

@@ -30,14 +30,12 @@ var LovenseToySupportedFunctions = {
 class LovenseToy {
     constructor(init?: Partial<LovenseToy>) {
         Object.assign(this, init);
-
-
     }
 
-    nickname: String;
-    name: String;
-    id: String;
-    status: Number;
+    nickname: string;
+    name: string;
+    id: string;
+    status: number;
 
     features: LovenseFeature;
 }
